@@ -5,9 +5,12 @@ title: Adminer
 scalable: false
 
 options:
+- version: '6'
+  tag: '6-6.0.0'
+  default: true
 - version: '5'
   tag: '5-5.1.2'
-  default: true
+  eol: '2026-08-07T14:46:24+00:00'
 
 endpoints:
 - name: adminer
@@ -46,7 +49,7 @@ helm:
   name: wodby
   source: oci://registry-1.docker.io/wodby/adminer
   chart: oci://registry-1.docker.io/wodby/adminer
-  version: 0.1.0
+  version: 0.2.0
   valueMappings:
     replicas: replicaCount
     fullnameOverride: fullnameOverride
