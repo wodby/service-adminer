@@ -1,0 +1,73 @@
+name: adminer
+icon: adminer
+type: service
+title: Adminer
+scalable: false
+
+options:
+- version: '5'
+  tag: '5.5-5.1.2'
+  default: true
+
+endpoints:
+- name: adminer
+  ports:
+  - name: http
+    number: 80
+    protocol: http
+
+labels:
+- adminer
+- database-admin
+
+links:
+- name: db
+  title: Database
+  required: true
+  env:
+  - name: ADMINER_DEFAULT_DB_DRIVER
+    value: '{{link.database.driver}}'
+  - name: ADMINER_DEFAULT_DB_HOST
+    value: '{{link.database.host}}:{{link.database.port}}'
+  - name: ADMINER_DEFAULT_DB_NAME
+    value: '{{link.database.db.name}}'
+  selectors:
+  - type: db
+    labels:
+    - mariadb
+  - type: db
+    labels:
+    - mysql
+  - type: db
+    labels:
+    - postgres
+
+helm:
+  name: wodby
+  source: oci://registry-1.docker.io/wodby/adminer
+  chart: oci://registry-1.docker.io/wodby/adminer
+  version: 0.1.0
+  valueMappings:
+    replicas: replicaCount
+    fullnameOverride: fullnameOverride
+    serviceAccountName: serviceAccount.name
+    serviceAccountCreate: serviceAccount.create
+
+workloads:
+- name: main
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: '{{helm.release}}'
+  kind: deployment
+  primary: true
+  helm:
+    labels: podLabels
+    annotations: podAnnotations
+    volumes: extraVolumes
+  containers:
+  - name: adminer
+    image: wodby/adminer
+    helm:
+      resources: resources
+      env: envVars
+      mounts: extraVolumeMounts
