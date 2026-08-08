@@ -8,9 +8,6 @@ options:
 - version: '6'
   tag: '6-6.0.0'
   default: true
-- version: '5'
-  tag: '5-5.1.2'
-  eol: '2026-08-07T14:46:24+00:00'
 
 endpoints:
 - name: adminer
