@@ -42,11 +42,17 @@ links:
     labels:
     - postgres
 
+deployment:
+  strategy: recreate
+  minReady: 10s
+  progressDeadline: 15m
+  shutdownGracePeriod: 30s
+
 helm:
   name: wodby
   source: oci://registry-1.docker.io/wodby/adminer
   chart: oci://registry-1.docker.io/wodby/adminer
-  version: 0.2.0
+  version: 0.3.0
   valueMappings:
     replicas: replicaCount
     fullnameOverride: fullnameOverride
