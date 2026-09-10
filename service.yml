@@ -4,6 +4,10 @@ type: service
 title: Adminer
 scalable: false
 
+env:
+- name: ADMINER_PLUGINS
+  value: 'tables-filter edit-textarea'
+
 options:
 - version: '6'
   tag: '6-6.0.1'
