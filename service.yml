@@ -10,7 +10,7 @@ env:
 
 options:
 - version: '6'
-  tag: '6-6.0.1'
+  tag: '6-6.0.4'
   default: true
 
 endpoints:
