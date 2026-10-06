@@ -2,6 +2,7 @@ name: adminer
 icon: adminer
 type: service
 title: Adminer
+guidance: GUIDANCE.md
 scalable: false
 
 env:
