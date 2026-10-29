@@ -1,6 +1,7 @@
 name: adminer
 icon: adminer
 type: service
+basicAuth: true
 title: Adminer
 guidance: GUIDANCE.md
 scalable: false
