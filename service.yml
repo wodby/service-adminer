@@ -12,7 +12,7 @@ env:
 
 options:
 - version: '6'
-  tag: 6-r7
+  tag: 6-r8
   default: true
 endpoints:
 - name: adminer
