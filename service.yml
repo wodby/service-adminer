@@ -12,8 +12,8 @@ env:
 
 options:
 - version: '6'
-  tag: 6-r13
-  digest: sha256:bc8f4e85e168646efb6465c42b9ca4a49d8f883e2e7323c17605d3e3ce57f0cb
+  tag: 6-r14
+  digest: sha256:d183ea335bdb3462cf0f1625f986522697b05e0a5a60cbcefa2137cb8d01e404
   default: true
 endpoints:
 - name: adminer
